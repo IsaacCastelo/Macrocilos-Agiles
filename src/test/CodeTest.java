@@ -9,8 +9,7 @@ public class CodeTest {
 
     public static void main(String[] args) {
         // Clase para testear código necesario.
-        System.out.println("simple print");
-        System.out.println("este es otro test");
+
     }
 
 }
