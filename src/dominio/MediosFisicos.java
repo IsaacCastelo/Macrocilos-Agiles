@@ -6,8 +6,8 @@ package dominio;
  * @author Kevin
  */
 public class MediosFisicos {
-    private int id;
-    private String nombre;
+    public int id;
+    public String nombre;
 
     public MediosFisicos() {
     }

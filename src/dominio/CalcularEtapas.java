@@ -6,9 +6,9 @@ package dominio;
  * @author Kevin
  */
 public class CalcularEtapas {
-    private int id,semanas, ins;
-    private float min, max, prom, volumenEtapa;
-    private String tipoEtapa;
+    public int id,semanas, ins;
+    public float min, max, prom, volumenEtapa;
+    public String tipoEtapa;
 
     public CalcularEtapas() {
     }

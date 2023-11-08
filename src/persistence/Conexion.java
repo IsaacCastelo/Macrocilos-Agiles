@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author Luis Fernando Aguilar Ortiz 228419 ITSON ISW obregon-Camp-Nainari
  */
-public abstract class DAO {
+public class Conexion {
     protected Connection conn = null;
     protected ResultSet resultado = null;
     protected Statement stm = null;
@@ -31,15 +31,19 @@ public abstract class DAO {
     /**
      * Creamos un metodo para conectarnos a la base de datos
      */
-    protected void conectarDB() throws ClassNotFoundException, SQLException {
+    public Conexion() {
         try {
             Class.forName(DRIVER);
             String url = "jdbc:mysql://localhost:3306/" + DATABASE + "?useSSL=false";
             conn = DriverManager.getConnection(url, USER, PASSWORD);
 
         } catch (ClassNotFoundException | SQLException ex) {
-            throw ex;
+            ex.printStackTrace();
         }
+    }
+    
+    public Connection getConexion(){
+        return conn;
     }
 
     /**
@@ -83,16 +87,5 @@ public abstract class DAO {
 //            desconectarDB();
 //        }
 //    }
-    /**
-     * Creamos un metodo para para leer registros de la base de datos
-     */
-    protected void consultarDB(String sql) throws Exception{
-        try {
-            conectarDB();
-            stm = conn.createStatement();
-            resultado = stm.executeQuery(sql);
-        } catch (Exception ex) {
-            throw ex;
-        }
-}
+
 }

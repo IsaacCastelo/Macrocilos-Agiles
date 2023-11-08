@@ -24,10 +24,10 @@ public class DistribucionVolumen {
         this.mediosFisicos = mediosFisicos;
     }
     
-    private int id, etapa, semanaa, mesociclo;
-    private Date fechaInicio, fechaFin;
-    private float ciclicidad, acentos, esfuerzo;
-    private String mediosFisicos;
+    public int id, etapa, semanaa, mesociclo;
+    public Date fechaInicio, fechaFin;
+    public float ciclicidad, acentos, esfuerzo;
+    public String mediosFisicos;
 
     public int getId() {
         return id;
