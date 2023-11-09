@@ -67,6 +67,8 @@ public class Conexion {
             throw e;
         }
     }
+    
+    
     /** BORRAMOS ESTE METODO PARA MEJORAR EL CODIGO
      * Creamos un metodo para para insertar, modificar o eliminar registros de la base de datos
      */

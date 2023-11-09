@@ -10,31 +10,38 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Kevin
+ * @author
  */
 public class CasosPruebasTest {
-    
-    public CasosPruebasTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
+
+    @Test
+    public void testValidarEntradaDeDatos() {
+        
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testDefinirEtapas() {
     }
+
+    @Test
+    public void testMostrarVolumenTotal() {
+    }
+
+    @Test
+    public void testLogicaCalculoVolumen() {
+    }
+
+    @Test
+    public void testManejoExcepciones() {
+    }
+
+    @Test
+    public void testAlmacenamientoBaseDatos() {
+    }
+
+    @Test
+    public void testIntegridadConsistenciaDatos() {
+    }
+    
     
 }
