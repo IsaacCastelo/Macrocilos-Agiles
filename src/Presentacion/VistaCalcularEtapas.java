@@ -73,7 +73,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 tipo_EtapaTextActionPerformed(evt);
             }
         });
-        getContentPane().add(tipo_EtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, -1, -1));
+        getContentPane().add(tipo_EtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 20, -1));
 
         SemanasLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         SemanasLabel.setText("Semanas:");
@@ -84,7 +84,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 SemanasTextActionPerformed(evt);
             }
         });
-        getContentPane().add(SemanasText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+        getContentPane().add(SemanasText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 20, -1));
 
         MinLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         MinLabel.setText("Min:");
@@ -95,7 +95,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 MinTextActionPerformed(evt);
             }
         });
-        getContentPane().add(MinText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
+        getContentPane().add(MinText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 20, -1));
 
         MaxLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         MaxLabel.setText("Max:");
@@ -106,7 +106,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 MaxTextActionPerformed(evt);
             }
         });
-        getContentPane().add(MaxText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+        getContentPane().add(MaxText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 20, -1));
 
         PromLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         PromLabel.setText("Prom:");
@@ -117,7 +117,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 PromTextActionPerformed(evt);
             }
         });
-        getContentPane().add(PromText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, -1, -1));
+        getContentPane().add(PromText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 20, -1));
 
         InsLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         InsLabel.setText("Ins:");
@@ -128,7 +128,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 InsTextActionPerformed(evt);
             }
         });
-        getContentPane().add(InsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
+        getContentPane().add(InsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 20, -1));
 
         VolumenEtapaLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         VolumenEtapaLabel.setText("Volumen Etapa:");
@@ -139,7 +139,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 VolumenEtapaTextActionPerformed(evt);
             }
         });
-        getContentPane().add(VolumenEtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, -1));
+        getContentPane().add(VolumenEtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 20, -1));
 
         ButtonEnviar.setText("Enviar");
         ButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
