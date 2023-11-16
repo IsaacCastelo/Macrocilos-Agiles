@@ -96,7 +96,7 @@ public class DistribucionVolumenDAO extends Conexion {
     public boolean eliminar(int id) {
         PreparedStatement pst = null;
         try {
-            String sql = "DELETE FROM DistribucionVolumen WHERE id=?";
+            String sql = "DELETE FROM DistribucionVolumen WHERE MediosFisicos_id=?";
             pst = getConexion().prepareStatement(sql);
             pst.setInt(1, id);
 
@@ -124,7 +124,7 @@ public class DistribucionVolumenDAO extends Conexion {
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT * DistribucionVolumen WHERE id=?";
+            String sql = "SELECT * FROM DistribucionVolumen WHERE id=?";
             pst = getConexion().prepareStatement(sql);
             pst.setInt(1, id);
             rs = pst.executeQuery();
@@ -163,6 +163,51 @@ public class DistribucionVolumenDAO extends Conexion {
             }
         }
         return null; // Si no se encontró la etapa con el ID especificado
+    }
+    public DistribucionVolumen consulTodo(){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT * FROM DistribucionVolumen  ";
+            pst = getConexion().prepareStatement(sql);
+          
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                DistribucionVolumen vol = new DistribucionVolumen();
+                vol.setId(rs.getInt("id"));
+                vol.setEtapa(rs.getInt("etapa"));
+                vol.setSemanaa(rs.getInt("semanaa"));
+                vol.setMesociclo(rs.getInt("mesociclo"));
+                java.sql.Date fechaInicioSql = rs.getDate("fechaInicio");
+                java.sql.Date fechaFinSql = rs.getDate("fechaFin");
+                vol.setFechaInicio(new java.sql.Date(fechaInicioSql.getTime()));
+                vol.setFechaFin(new java.sql.Date(fechaFinSql.getTime()));
+                vol.setCiclicidad(rs.getFloat("ciclicidad"));
+                vol.setAcentos(rs.getFloat("acentos"));
+                vol.setEsfuerzo(rs.getFloat("esfuerzo"));
+                vol.setMediosFisicos(rs.getString("mediosFisicos"));
+                return vol;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en: " + e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (getConexion() != null) {
+                    getConexion().close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error en: " + e);
+            }
+        }
+        return null; // Si no se encontró la etapa con el ID especificado
+    
     }
     
 }

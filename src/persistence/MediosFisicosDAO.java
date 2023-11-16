@@ -131,4 +131,44 @@ public class MediosFisicosDAO extends Conexion{
         }
         return null; // Si no se encontró la etapa con el ID especificado
     }
+   /**
+    * consulta por nombre de medio fisico.
+    * @param nombre nombre de medio fisico.
+    * @return lista de medios fisicos
+    */
+    public MediosFisicos consulNombre(String nombre){
+      PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT * FROM MediosFisicos WHERE nombre=?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1, nombre);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                MediosFisicos medios = new MediosFisicos();
+                medios.setId(rs.getInt("id"));
+                medios.setNombre(rs.getString("nombre"));
+                return medios;
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en: " + e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (getConexion() != null) {
+                    getConexion().close();
+                }
+            } catch (Exception e) {
+                System.out.println("Error en: " + e);
+            }
+        }
+        return null; // Si no se encontró la etapa con el ID especificado
+   
+}
 }
