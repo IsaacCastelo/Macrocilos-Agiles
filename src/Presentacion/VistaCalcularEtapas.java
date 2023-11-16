@@ -73,7 +73,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 tipo_EtapaTextActionPerformed(evt);
             }
         });
-        getContentPane().add(tipo_EtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 20, -1));
+        getContentPane().add(tipo_EtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 80, -1));
 
         SemanasLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         SemanasLabel.setText("Semanas:");
@@ -84,7 +84,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 SemanasTextActionPerformed(evt);
             }
         });
-        getContentPane().add(SemanasText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 20, -1));
+        getContentPane().add(SemanasText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 40, -1));
 
         MinLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         MinLabel.setText("Min:");
@@ -95,7 +95,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 MinTextActionPerformed(evt);
             }
         });
-        getContentPane().add(MinText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 20, -1));
+        getContentPane().add(MinText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 40, -1));
 
         MaxLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         MaxLabel.setText("Max:");
@@ -106,7 +106,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 MaxTextActionPerformed(evt);
             }
         });
-        getContentPane().add(MaxText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 20, -1));
+        getContentPane().add(MaxText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 40, -1));
 
         PromLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         PromLabel.setText("Prom:");
@@ -117,7 +117,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 PromTextActionPerformed(evt);
             }
         });
-        getContentPane().add(PromText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 20, -1));
+        getContentPane().add(PromText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 40, -1));
 
         InsLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         InsLabel.setText("Ins:");
@@ -128,7 +128,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 InsTextActionPerformed(evt);
             }
         });
-        getContentPane().add(InsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 20, -1));
+        getContentPane().add(InsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 40, -1));
 
         VolumenEtapaLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         VolumenEtapaLabel.setText("Volumen Etapa:");
@@ -139,7 +139,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
                 VolumenEtapaTextActionPerformed(evt);
             }
         });
-        getContentPane().add(VolumenEtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 20, -1));
+        getContentPane().add(VolumenEtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 40, -1));
 
         ButtonEnviar.setText("Enviar");
         ButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +252,40 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
-    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VistaDistribucionVolumen().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnLimpiar;

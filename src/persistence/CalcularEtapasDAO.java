@@ -16,7 +16,7 @@ public class CalcularEtapasDAO extends Conexion{
     public boolean registrar(CalcularEtapas etapa) {
         PreparedStatement pst = null;
         try {
-            String sql = "INSERT INTO CalcularEtapas (semanas, ins, min, max, prom, volumenEtapa, tipoEtapa) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO calcularetapas (semanas, ins, min, max, prom, volumenEtapa, tipoEtapa) VALUES (?, ?, ?, ?, ?, ?, ?)";
             pst = getConexion().prepareStatement(sql);
             pst.setInt(1, etapa.semanas);
             pst.setInt(2, etapa.ins);
