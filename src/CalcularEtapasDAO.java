@@ -144,44 +144,4 @@ public class CalcularEtapasDAO extends Conexion{
         }
         return null; // Si no se encontró la etapa con el ID especificado
     }
-     public CalcularEtapas consultarTodo() {
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        try {
-            String sql = "SELECT * FROM calcularetapas;";
-            pst = getConexion().prepareStatement(sql);
-          
-            rs = pst.executeQuery();
-
-            if (rs.next()) {
-                CalcularEtapas etapa = new CalcularEtapas();
-                etapa.setId(rs.getInt("id"));
-                etapa.setSemanas(rs.getInt("semanas"));
-                etapa.setIns(rs.getInt("ins"));
-                etapa.setMin(rs.getFloat("min"));
-                etapa.setMax(rs.getFloat("max"));
-                etapa.setProm(rs.getFloat("prom"));
-                etapa.setVolumenEtapa(rs.getFloat("volumenEtapa"));
-                etapa.setTipoEtapa(rs.getString("MediosFisicos"));
-                return etapa;
-            }
-        } catch (SQLException e) {
-            System.out.println("Error en: " + e);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (pst != null) {
-                    pst.close();
-                }
-                if (getConexion() != null) {
-                    getConexion().close();
-                }
-            } catch (Exception e) {
-                System.out.println("Error en: " + e);
-            }
-        }
-        return null; // Si no se encontró la etapa con el ID especificado
-    }
 }
