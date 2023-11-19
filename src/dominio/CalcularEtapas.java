@@ -1,10 +1,6 @@
 
 package dominio;
 
-/**
- *
- * @author Kevin
- */
 public class CalcularEtapas {
     public int id,semanas, ins;
     public float min, max, prom, volumenEtapa;

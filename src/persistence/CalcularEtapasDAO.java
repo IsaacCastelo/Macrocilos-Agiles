@@ -1,9 +1,5 @@
 package persistence;
 
-/**
- * Carlos A. Valle Encinas 
-ITSON ISW 228219
- **/ 
 
 import dominio.CalcularEtapas;
 import java.sql.PreparedStatement;
