@@ -239,9 +239,8 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
         MaxText.setText("");
         MinText.setText("");
         PromText.setText("");
-        
-       
         VolumenEtapaText.setText("");
+        
         
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
@@ -275,7 +274,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaDistribucionVolumen().setVisible(true);
+                new VistaCalcularEtapas().setVisible(true);
             }
         });
     }
