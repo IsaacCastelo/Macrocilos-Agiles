@@ -1,40 +1,41 @@
-
 package Presentacion;
 
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class VistaCalcularEtapasTest {
-    
-    public VistaCalcularEtapasTest() {
+
+    private VistaCalcularEtapas vista;
+
+    @Before
+    public void setUp() {
+        vista = new VistaCalcularEtapas();
     }
 
     @Test
-    public void testValidarEntradaDeDatos() { 
+    public void testEntradasYEnvio() {
+
     }
 
     @Test
-    public void testDefinirEtapas() {
+    public void testEtapasInterfaz() {
+
     }
 
     @Test
-    public void testMostrarVolumenTotal() {
-    }
+    public void testLogicaEtapa() {
 
-    @Test
-    public void testLogicaCalculoVolumen() {
     }
 
     @Test
     public void testManejoExcepciones() {
-    }
 
-    @Test
-    public void testAlmacenamientoBaseDatos() {
     }
+    
+    @Test
+    public void testAlmacenamientoEtapas() {
 
-    @Test
-    public void testIntegridadConsistenciaDatos() {
     }
+    
     
 }
