@@ -1,6 +1,9 @@
 
 package Presentacion;
 import dominio.CalcularEtapas;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class VistaCalcularEtapas extends javax.swing.JFrame {
     
@@ -230,7 +233,8 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
 
         // TODO add your handling code here:
-        
+        tipo_EtapaText.setText("");
+        SemanasText.setText("");
         InsText.setText("");
         MaxText.setText("");
         MinText.setText("");
@@ -240,6 +244,184 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
+    public CalcularEtapas getEtapa_Calculada() {
+        return etapa_Calculada;
+    }
+
+    public void setEtapa_Calculada(CalcularEtapas etapa_Calculada) {
+        this.etapa_Calculada = etapa_Calculada;
+    }
+
+    public JButton getBtnLimpiar() {
+        return BtnLimpiar;
+    }
+
+    public void setBtnLimpiar(JButton BtnLimpiar) {
+        this.BtnLimpiar = BtnLimpiar;
+    }
+
+    public JButton getBtnRegresar() {
+        return BtnRegresar;
+    }
+
+    public void setBtnRegresar(JButton BtnRegresar) {
+        this.BtnRegresar = BtnRegresar;
+    }
+
+    public JButton getButtonEnviar() {
+        return ButtonEnviar;
+    }
+
+    public void setButtonEnviar(JButton ButtonEnviar) {
+        this.ButtonEnviar = ButtonEnviar;
+    }
+
+    public JLabel getFondoLabel() {
+        return FondoLabel;
+    }
+
+    public void setFondoLabel(JLabel FondoLabel) {
+        this.FondoLabel = FondoLabel;
+    }
+
+    public JLabel getImagenPotrosLabel() {
+        return ImagenPotrosLabel;
+    }
+
+    public void setImagenPotrosLabel(JLabel ImagenPotrosLabel) {
+        this.ImagenPotrosLabel = ImagenPotrosLabel;
+    }
+
+    public JLabel getInsLabel() {
+        return InsLabel;
+    }
+
+    public void setInsLabel(JLabel InsLabel) {
+        this.InsLabel = InsLabel;
+    }
+
+    public JTextField getInsText() {
+        return InsText;
+    }
+
+    public void setInsText(JTextField InsText) {
+        this.InsText = InsText;
+    }
+
+    public JLabel getLabelMedioFisico() {
+        return LabelMedioFisico;
+    }
+
+    public void setLabelMedioFisico(JLabel LabelMedioFisico) {
+        this.LabelMedioFisico = LabelMedioFisico;
+    }
+
+    public JLabel getMaxLabel() {
+        return MaxLabel;
+    }
+
+    public void setMaxLabel(JLabel MaxLabel) {
+        this.MaxLabel = MaxLabel;
+    }
+
+    public JTextField getMaxText() {
+        return MaxText;
+    }
+
+    public void setMaxText(JTextField MaxText) {
+        this.MaxText = MaxText;
+    }
+
+    public JLabel getMinLabel() {
+        return MinLabel;
+    }
+
+    public void setMinLabel(JLabel MinLabel) {
+        this.MinLabel = MinLabel;
+    }
+
+    public JTextField getMinText() {
+        return MinText;
+    }
+
+    public void setMinText(JTextField MinText) {
+        this.MinText = MinText;
+    }
+
+    public JLabel getPromLabel() {
+        return PromLabel;
+    }
+
+    public void setPromLabel(JLabel PromLabel) {
+        this.PromLabel = PromLabel;
+    }
+
+    public JTextField getPromText() {
+        return PromText;
+    }
+
+    public void setPromText(JTextField PromText) {
+        this.PromText = PromText;
+    }
+
+    public JLabel getSemanasLabel() {
+        return SemanasLabel;
+    }
+
+    public void setSemanasLabel(JLabel SemanasLabel) {
+        this.SemanasLabel = SemanasLabel;
+    }
+
+    public JTextField getSemanasText() {
+        return SemanasText;
+    }
+
+    public void setSemanasText(JTextField SemanasText) {
+        this.SemanasText = SemanasText;
+    }
+
+    public JLabel getTituloLabel() {
+        return TituloLabel;
+    }
+
+    public void setTituloLabel(JLabel TituloLabel) {
+        this.TituloLabel = TituloLabel;
+    }
+
+    public JLabel getVolumenEtapaLabel() {
+        return VolumenEtapaLabel;
+    }
+
+    public void setVolumenEtapaLabel(JLabel VolumenEtapaLabel) {
+        this.VolumenEtapaLabel = VolumenEtapaLabel;
+    }
+
+    public JTextField getVolumenEtapaText() {
+        return VolumenEtapaText;
+    }
+
+    public void setVolumenEtapaText(JTextField VolumenEtapaText) {
+        this.VolumenEtapaText = VolumenEtapaText;
+    }
+
+    public JLabel getTipo_EtapaLabel() {
+        return tipo_EtapaLabel;
+    }
+
+    public void setTipo_EtapaLabel(JLabel tipo_EtapaLabel) {
+        this.tipo_EtapaLabel = tipo_EtapaLabel;
+    }
+
+    public JTextField getTipo_EtapaText() {
+        return tipo_EtapaText;
+    }
+
+    public void setTipo_EtapaText(JTextField tipo_EtapaText) {
+        this.tipo_EtapaText = tipo_EtapaText;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
