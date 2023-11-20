@@ -198,10 +198,6 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
     private void ButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviarActionPerformed
         // TODO add your handling code here:
         
-        
-        /**
-         * 
-         */
         float MinText,MaxText,PromText,VolumenEtapaText;
         int InsText,SemanasText; 
         String tipo_EtapaText;

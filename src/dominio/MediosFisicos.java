@@ -1,10 +1,6 @@
 
 package dominio;
 
-/**
- *
- * @author Kevin
- */
 public class MediosFisicos {
     public int id;
     public String nombre;

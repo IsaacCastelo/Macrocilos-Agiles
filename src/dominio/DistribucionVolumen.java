@@ -2,10 +2,6 @@ package dominio;
 
 import java.sql.Date;
 
-/**
- *
- * @author
- */
 public class DistribucionVolumen {
 
     public DistribucionVolumen() {
