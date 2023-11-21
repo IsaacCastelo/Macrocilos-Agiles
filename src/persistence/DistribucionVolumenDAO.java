@@ -9,6 +9,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,10 +21,10 @@ public class DistribucionVolumenDAO extends Conexion {
     public boolean registrar(DistribucionVolumen vol) {
         PreparedStatement pst = null;
         try {
-            String sql = "INSERT INTO DistribucionVolumen (etapa, semanaa, mesociclo, fechaInicio, fechaFin, ciclicidad, acentos, esfuerzo, mediosFisicos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO DistribucionVolumen (etapa, semana, mesociclo, fechaInicio, fechaFin, ciclicidad, acentos, esfuerzo, mediosFisicos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pst = getConexion().prepareStatement(sql);
-            pst.setInt(1, vol.etapa);
-            pst.setInt(2, vol.semanaa);
+            pst.setString(1, vol.etapa);
+            pst.setInt(2, vol.semana);
             pst.setInt(3, vol.mesociclo);
             java.sql.Date fechaInicioSql = new java.sql.Date(vol.fechaInicio.getTime());
             java.sql.Date fechaFinSql = new java.sql.Date(vol.fechaFin.getTime());
@@ -58,10 +60,10 @@ public class DistribucionVolumenDAO extends Conexion {
     public boolean editar(int id, DistribucionVolumen vol) {
         PreparedStatement pst = null;
         try {
-            String sql = "UPDATE DistribucionVolumen SET etapa=?, semanaa=?, mesociclo=?, fechaInicio=?, fechaFin=?, ciclicidad=?, acentos=?, esfierzo=?, mediosFisicos=? WHERE id=?";
+            String sql = "UPDATE DistribucionVolumen SET etapa=?, semana=?, mesociclo=?, fechaInicio=?, fechaFin=?, ciclicidad=?, acentos=?, esfierzo=?, mediosFisicos=? WHERE id=?";
             pst = getConexion().prepareStatement(sql);
-             pst.setInt(1, vol.etapa);
-            pst.setInt(2, vol.semanaa);
+             pst.setString(1, vol.etapa);
+            pst.setInt(2, vol.semana);
             pst.setInt(3, vol.mesociclo);
             java.sql.Date fechaInicioSql = new java.sql.Date(vol.fechaInicio.getTime());
             java.sql.Date fechaFinSql = new java.sql.Date(vol.fechaFin.getTime());
@@ -132,8 +134,8 @@ public class DistribucionVolumenDAO extends Conexion {
             if (rs.next()) {
                 DistribucionVolumen vol = new DistribucionVolumen();
                 vol.setId(rs.getInt("id"));
-                vol.setEtapa(rs.getInt("etapa"));
-                vol.setSemanaa(rs.getInt("semanaa"));
+                vol.setEtapa(rs.getString("etapa"));
+                vol.setSemanaa(rs.getInt("semana"));
                 vol.setMesociclo(rs.getInt("mesociclo"));
                 java.sql.Date fechaInicioSql = rs.getDate("fechaInicio");
                 java.sql.Date fechaFinSql = rs.getDate("fechaFin");
@@ -164,7 +166,8 @@ public class DistribucionVolumenDAO extends Conexion {
         }
         return null; // Si no se encontró la etapa con el ID especificado
     }
-    public DistribucionVolumen consulTodo(){
+    public List<DistribucionVolumen> consulTodo(){
+        List<DistribucionVolumen> listaDistribucion = new ArrayList<>();
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
@@ -173,11 +176,11 @@ public class DistribucionVolumenDAO extends Conexion {
           
             rs = pst.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 DistribucionVolumen vol = new DistribucionVolumen();
                 vol.setId(rs.getInt("id"));
-                vol.setEtapa(rs.getInt("etapa"));
-                vol.setSemanaa(rs.getInt("semanaa"));
+                vol.setEtapa(rs.getString("etapa"));
+                vol.setSemanaa(rs.getInt("semana"));
                 vol.setMesociclo(rs.getInt("mesociclo"));
                 java.sql.Date fechaInicioSql = rs.getDate("fechaInicio");
                 java.sql.Date fechaFinSql = rs.getDate("fechaFin");
@@ -187,8 +190,11 @@ public class DistribucionVolumenDAO extends Conexion {
                 vol.setAcentos(rs.getFloat("acentos"));
                 vol.setEsfuerzo(rs.getFloat("esfuerzo"));
                 vol.setMediosFisicos(rs.getString("mediosFisicos"));
-                return vol;
+                
+                listaDistribucion.add(vol);
             }
+            
+            return listaDistribucion;
         } catch (SQLException e) {
             System.out.println("Error en: " + e);
         } finally {

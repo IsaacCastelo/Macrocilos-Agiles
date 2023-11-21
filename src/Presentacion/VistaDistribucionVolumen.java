@@ -4,44 +4,67 @@
  */
 package Presentacion;
 
+import dominio.DistribucionVolumen;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import persistence.DistribucionVolumenDAO;
 
 /**
  *
  * @author jonyo
  */
 public class VistaDistribucionVolumen extends javax.swing.JFrame {
+    DefaultTableModel modelo;
+    public DistribucionVolumenDAO distribucion= new DistribucionVolumenDAO();
 
     /**
      * Creates new form VistaDistribucionVolumen
      */
     public VistaDistribucionVolumen() {
         initComponents();
+        setLocationRelativeTo(null); 
+        setTitle("Distribución Volumen");
+        
+        modelo= new DefaultTableModel();
+        modelo.addColumn("Id");
+        modelo.addColumn("Etapa");
+        modelo.addColumn("Semana");
+        modelo.addColumn("Fecha Inicio");
+        modelo.addColumn("Fecha Fin");
+        modelo.addColumn("Mesociclo");
+        modelo.addColumn("Ciclicidad");
+        modelo.addColumn("Acentos");
+        modelo.addColumn("Medios Fisicos");
+        modelo.addColumn("Esfuerzo");
+
+        this.TablaDistribucionVolumen.setModel(modelo);
+        LLenarTabla();
     }
     
     public void LLenarTabla (){
+        List<DistribucionVolumen> list= distribucion.consulTodo();
+        DefaultTableModel model= (DefaultTableModel) TablaDistribucionVolumen.getModel();
+        int rowCount = model.getRowCount();
         
-        /**
-         * for(i=0; i<matriz.length; i++){ 
-         *   for(j=0; j<matriz[i].length; j++){
-         *      if(matriz[i][j]==numero){ 
-         *           break; //rompemos el bucle
-         *      } 
-         *   }
-         * }
-         *
-         */
+        for(int m=rowCount-1;m>=0;m--)
+        {
+           model.removeRow(m);
+        }
         
-        
-        String columnas [];
-        String datos [][];
-        
-        columnas=new String [32];
-        datos=new String[32][20];
-        
-        DefaultTableModel modelo=new DefaultTableModel();
-    
-        TablaDistribucionVolumen.setModel(modelo);
+         Object rowData[]=new Object[10];
+        for(int i=0; i<list.size();i++){
+            rowData[0]=list.get(i).id;
+            rowData[1]=list.get(i).etapa;
+            rowData[2]=list.get(i).semana;
+            rowData[3]=list.get(i).fechaInicio;
+            rowData[4]=list.get(i).fechaFin;
+             rowData[5]=list.get(i).mesociclo;
+            rowData[6]=list.get(i).ciclicidad;
+            rowData[7]=list.get(i).acentos;
+            rowData[8]=list.get(i).mediosFisicos;
+            rowData[9]=list.get(i).esfuerzo;
+            model.addRow(rowData);
+        }
     }
 
     /**
