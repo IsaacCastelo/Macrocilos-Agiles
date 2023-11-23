@@ -7,10 +7,10 @@ public class DistribucionVolumen {
     public DistribucionVolumen() {
     }
 
-    public DistribucionVolumen(int id, int etapa, int semanaa, int mesociclo, Date fechaInicio, Date fechaFin, float ciclicidad, float acentos, float esfuerzo, String mediosFisicos) {
+    public DistribucionVolumen(int id, String etapa, int semana, int mesociclo, Date fechaInicio, Date fechaFin, float ciclicidad, float acentos, float esfuerzo, String mediosFisicos) {
         this.id = id;
         this.etapa = etapa;
-        this.semanaa = semanaa;
+        this.semana = semana;
         this.mesociclo = mesociclo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -20,7 +20,8 @@ public class DistribucionVolumen {
         this.mediosFisicos = mediosFisicos;
     }
     
-    public int id, etapa, semanaa, mesociclo;
+    public int id, semana, mesociclo;
+    public String etapa;
     public Date fechaInicio, fechaFin;
     public float ciclicidad, acentos, esfuerzo;
     public String mediosFisicos;
@@ -33,20 +34,20 @@ public class DistribucionVolumen {
         this.id = id;
     }
 
-    public int getEtapa() {
+    public String getEtapa() {
         return etapa;
     }
 
-    public void setEtapa(int etapa) {
+    public void setEtapa(String etapa) {
         this.etapa = etapa;
     }
 
     public int getSemanaa() {
-        return semanaa;
+        return semana;
     }
 
     public void setSemanaa(int semanaa) {
-        this.semanaa = semanaa;
+        this.semana = semanaa;
     }
 
     public int getMesociclo() {

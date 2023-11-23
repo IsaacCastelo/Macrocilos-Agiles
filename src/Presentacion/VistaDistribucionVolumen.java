@@ -4,22 +4,46 @@
  */
 package Presentacion;
 
+<<<<<<< HEAD
 import Lógica.DistribucionVolumenNegocio;
+=======
+>>>>>>> 57e5ff5b17dcdbe1d2efdaa64429ea7cc4616826
 import dominio.DistribucionVolumen;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import persistence.DistribucionVolumenDAO;
 
 /**
  *
  * @author jonyo
  */
 public class VistaDistribucionVolumen extends javax.swing.JFrame {
+    DefaultTableModel modelo;
+    public DistribucionVolumenDAO distribucion= new DistribucionVolumenDAO();
 
 
     public VistaDistribucionVolumen() {
         initComponents();
+        setLocationRelativeTo(null); 
+        setTitle("Distribución Volumen");
+        
+        modelo= new DefaultTableModel();
+        modelo.addColumn("Id");
+        modelo.addColumn("Etapa");
+        modelo.addColumn("Semana");
+        modelo.addColumn("Fecha Inicio");
+        modelo.addColumn("Fecha Fin");
+        modelo.addColumn("Mesociclo");
+        modelo.addColumn("Ciclicidad");
+        modelo.addColumn("Acentos");
+        modelo.addColumn("Medios Fisicos");
+        modelo.addColumn("Esfuerzo");
+
+        this.TablaDistribucionVolumen.setModel(modelo);
+        LLenarTabla();
     }
     
+<<<<<<< HEAD
     public void LLenarTablaDist (){
     DistribucionVolumenNegocio distribucionVolumenNegocio = new DistribucionVolumenNegocio();
     List<DistribucionVolumen> listaDistribucionVolumen = distribucionVolumenNegocio.obtenerInformacionDistribucionVolumen();
@@ -40,6 +64,32 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
             distribucion.getEsfuerzo(),
             distribucion.getMediosFisicos()
         });
+=======
+    public void LLenarTabla (){
+        List<DistribucionVolumen> list= distribucion.consulTodo();
+        DefaultTableModel model= (DefaultTableModel) TablaDistribucionVolumen.getModel();
+        int rowCount = model.getRowCount();
+        
+        for(int m=rowCount-1;m>=0;m--)
+        {
+           model.removeRow(m);
+        }
+        
+         Object rowData[]=new Object[10];
+        for(int i=0; i<list.size();i++){
+            rowData[0]=list.get(i).id;
+            rowData[1]=list.get(i).etapa;
+            rowData[2]=list.get(i).semana;
+            rowData[3]=list.get(i).fechaInicio;
+            rowData[4]=list.get(i).fechaFin;
+             rowData[5]=list.get(i).mesociclo;
+            rowData[6]=list.get(i).ciclicidad;
+            rowData[7]=list.get(i).acentos;
+            rowData[8]=list.get(i).mediosFisicos;
+            rowData[9]=list.get(i).esfuerzo;
+            model.addRow(rowData);
+        }
+>>>>>>> 57e5ff5b17dcdbe1d2efdaa64429ea7cc4616826
     }
 
     // Asignar el modelo a la tabla en la interfaz de usuario
