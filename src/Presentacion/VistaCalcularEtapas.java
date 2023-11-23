@@ -49,7 +49,8 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
         LabelMedioFisico = new javax.swing.JLabel();
         FondoLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Calcular Etapas");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ImagenPotrosLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PotrosChico.jpg"))); // NOI18N
@@ -168,6 +169,7 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
         getContentPane().add(FondoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 550));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tipo_EtapaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo_EtapaTextActionPerformed

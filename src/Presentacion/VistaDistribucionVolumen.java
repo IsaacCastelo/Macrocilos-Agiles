@@ -4,14 +4,12 @@
  */
 package Presentacion;
 
-<<<<<<< HEAD
 import Lógica.DistribucionVolumenNegocio;
-=======
->>>>>>> 57e5ff5b17dcdbe1d2efdaa64429ea7cc4616826
 import dominio.DistribucionVolumen;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import persistence.DistribucionVolumenDAO;
+
 
 /**
  *
@@ -24,10 +22,11 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
 
     public VistaDistribucionVolumen() {
         initComponents();
+        
         setLocationRelativeTo(null); 
         setTitle("Distribución Volumen");
         
-        modelo= new DefaultTableModel();
+        modelo = new DefaultTableModel();
         modelo.addColumn("Id");
         modelo.addColumn("Etapa");
         modelo.addColumn("Semana");
@@ -40,10 +39,9 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
         modelo.addColumn("Esfuerzo");
 
         this.TablaDistribucionVolumen.setModel(modelo);
-        LLenarTabla();
+        LlenarTabla();
     }
     
-<<<<<<< HEAD
     public void LLenarTablaDist (){
     DistribucionVolumenNegocio distribucionVolumenNegocio = new DistribucionVolumenNegocio();
     List<DistribucionVolumen> listaDistribucionVolumen = distribucionVolumenNegocio.obtenerInformacionDistribucionVolumen();
@@ -64,9 +62,11 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
             distribucion.getEsfuerzo(),
             distribucion.getMediosFisicos()
         });
-=======
-    public void LLenarTabla (){
-        List<DistribucionVolumen> list= distribucion.consulTodo();
+        }
+    }
+
+    public void LlenarTabla (){
+        List<DistribucionVolumen> list = distribucion.consulTodo();
         DefaultTableModel model= (DefaultTableModel) TablaDistribucionVolumen.getModel();
         int rowCount = model.getRowCount();
         
@@ -89,13 +89,7 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
             rowData[9]=list.get(i).esfuerzo;
             model.addRow(rowData);
         }
->>>>>>> 57e5ff5b17dcdbe1d2efdaa64429ea7cc4616826
     }
-
-    // Asignar el modelo a la tabla en la interfaz de usuario
-    // Suponiendo que la tabla se llama 'tablaDistribucionVolumen'
-    TablaDistribucionVolumen.setModel(modelo);
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,7 +107,8 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
         NombreLabel = new javax.swing.JLabel();
         FondoLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Distribucion Volumen");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TituloLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -147,6 +142,7 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
         getContentPane().add(FondoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 499));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
