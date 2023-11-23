@@ -4,6 +4,9 @@
  */
 package Presentacion;
 
+import Lógica.DistribucionVolumenNegocio;
+import dominio.DistribucionVolumen;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,37 +15,37 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaDistribucionVolumen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VistaDistribucionVolumen
-     */
+
     public VistaDistribucionVolumen() {
         initComponents();
     }
     
-    public void LLenarTabla (){
-        
-        /**
-         * for(i=0; i<matriz.length; i++){ 
-         *   for(j=0; j<matriz[i].length; j++){
-         *      if(matriz[i][j]==numero){ 
-         *           break; //rompemos el bucle
-         *      } 
-         *   }
-         * }
-         *
-         */
-        
-        
-        String columnas [];
-        String datos [][];
-        
-        columnas=new String [32];
-        datos=new String[32][20];
-        
-        DefaultTableModel modelo=new DefaultTableModel();
-    
-        TablaDistribucionVolumen.setModel(modelo);
+    public void LLenarTablaDist (){
+    DistribucionVolumenNegocio distribucionVolumenNegocio = new DistribucionVolumenNegocio();
+    List<DistribucionVolumen> listaDistribucionVolumen = distribucionVolumenNegocio.obtenerInformacionDistribucionVolumen();
+
+    String[] columnas = new String[]{"ID", "Etapa", "Semana", "Mesociclo", "Fecha Inicio", "Fecha Fin", "Ciclicidad", "Acentos", "Esfuerzo", "Medios Físicos"};
+    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+    for (DistribucionVolumen distribucion : listaDistribucionVolumen) {
+        modelo.addRow(new Object[]{
+            distribucion.getId(),
+            distribucion.getEtapa(),
+            distribucion.getSemanaa(),
+            distribucion.getMesociclo(),
+            distribucion.getFechaInicio(),
+            distribucion.getFechaFin(),
+            distribucion.getCiclicidad(),
+            distribucion.getAcentos(),
+            distribucion.getEsfuerzo(),
+            distribucion.getMediosFisicos()
+        });
     }
+
+    // Asignar el modelo a la tabla en la interfaz de usuario
+    // Suponiendo que la tabla se llama 'tablaDistribucionVolumen'
+    TablaDistribucionVolumen.setModel(modelo);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,40 +99,7 @@ public class VistaDistribucionVolumen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaDistribucionVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaDistribucionVolumen().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoLabel;
