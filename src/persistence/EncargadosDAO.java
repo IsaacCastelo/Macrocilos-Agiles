@@ -1,11 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Luis Fernando Aguilar Ortiz 
+ITSON ISW 228419
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistence;
 
-import dominio.DistribucionVolumen;
-import java.sql.Date;
+
+import dominio.Encargados;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,27 +15,28 @@ import java.util.List;
 
 /**
  *
- * @author Carlos A. Valle Encinas
+ * @author Luis Fernando Aguilar Ortiz 228419 ITSON ISW obregon-Camp-Nainari
  */
-public class DistribucionVolumenDAO extends Conexion {
-    
-    public boolean registrar(DistribucionVolumen vol) {
+public class EncargadosDAO extends Conexion{
+      
+    public boolean registrar(Encargados enc) {
         PreparedStatement pst = null;
         try {
-            String sql = "INSERT INTO DistribucionVolumen (etapa, semana, mesociclo, fechaInicio, fechaFin, ciclicidad, acentos, esfuerzo, mediosFisicos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO encargados (   deporte,  rama,  jefeRama,  EntAuxPrepFis,  metodologo,  inicioPlan,  finPlan,  totalSemanas,  MediosFisicos_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
             pst = getConexion().prepareStatement(sql);
-            pst.setString(1, vol.etapa);
-            pst.setInt(2, vol.semana);
-            pst.setInt(3, vol.mesociclo);
-            java.sql.Date fechaInicioSql = new java.sql.Date(vol.fechaInicio.getTime());
-            java.sql.Date fechaFinSql = new java.sql.Date(vol.fechaFin.getTime());
-            pst.setDate(4, fechaInicioSql);
-            pst.setDate(5, fechaFinSql);
-            pst.setFloat(6, vol.ciclicidad);
-            pst.setFloat(7, vol.acentos);
-            pst.setFloat(8, vol.esfuerzo);
-            pst.setString(9, vol.mediosFisicos);
-           
+           pst.setString(1, enc.deporte);
+            pst.setString(2, enc.rama);
+            pst.setString(3, enc.jefeRama);
+            pst.setString(4, enc.EntAuxPrepFis);
+             pst.setString(5, enc.metodologo);
+             java.sql.Date fechaInicioSql = new java.sql.Date(enc.inicioPlan.getTime());
+            java.sql.Date fechaFinSql = new java.sql.Date(enc.finPlan.getTime());
+           pst.setDate(6, fechaInicioSql);
+            pst.setDate(7, fechaFinSql);
+            pst.setInt(8, enc.totalSemanas);
+            pst.setInt(9, enc.MediosFisicos_id);
+          
+            
 
             if (pst.executeUpdate() == 1) {
                 return true;
@@ -57,22 +59,21 @@ public class DistribucionVolumenDAO extends Conexion {
     }
 
 
-    public boolean editar(int id, DistribucionVolumen vol) {
+    public boolean editar(int id, Encargados enc) {
         PreparedStatement pst = null;
         try {
-            String sql = "UPDATE DistribucionVolumen SET etapa=?, semana=?, mesociclo=?, fechaInicio=?, fechaFin=?, ciclicidad=?, acentos=?, esfierzo=?, mediosFisicos=? WHERE id=?";
-            pst = getConexion().prepareStatement(sql);
-             pst.setString(1, vol.etapa);
-            pst.setInt(2, vol.semana);
-            pst.setInt(3, vol.mesociclo);
-            java.sql.Date fechaInicioSql = new java.sql.Date(vol.fechaInicio.getTime());
-            java.sql.Date fechaFinSql = new java.sql.Date(vol.fechaFin.getTime());
-            pst.setDate(4, fechaInicioSql);
-            pst.setDate(5, fechaFinSql);
-            pst.setFloat(6, vol.ciclicidad);
-            pst.setFloat(7, vol.acentos);
-            pst.setFloat(8, vol.esfuerzo);
-            pst.setString(9, vol.mediosFisicos);
+            String sql = "UPDATE encargados SET deporte=?, rama=?, jefeRama=?, EntAuxPrepFis=?, metodologo=?, inicioPlan=?, finPlan=?, totalSemanas=?, MediosFisicos_id=? WHERE id=?";
+            pst.setString(1, enc.deporte);
+            pst.setString(2, enc.rama);
+            pst.setString(3, enc.jefeRama);
+            pst.setString(4, enc.EntAuxPrepFis);
+             pst.setString(5, enc.metodologo);
+             java.sql.Date fechaInicioSql = new java.sql.Date(enc.inicioPlan.getTime());
+            java.sql.Date fechaFinSql = new java.sql.Date(enc.finPlan.getTime());
+           pst.setDate(6, fechaInicioSql);
+            pst.setDate(7, fechaFinSql);
+            pst.setInt(8, enc.totalSemanas);
+            pst.setInt(9, enc.MediosFisicos_id);
             pst.setInt(10, id);
 
             if (pst.executeUpdate() == 1) {
@@ -98,7 +99,7 @@ public class DistribucionVolumenDAO extends Conexion {
     public boolean eliminar(int id) {
         PreparedStatement pst = null;
         try {
-            String sql = "DELETE FROM DistribucionVolumen WHERE MediosFisicos_id=?";
+            String sql = "DELETE FROM encargados WHERE MediosFisicos_id=?";
             pst = getConexion().prepareStatement(sql);
             pst.setInt(1, id);
 
@@ -122,30 +123,30 @@ public class DistribucionVolumenDAO extends Conexion {
         return false;
     }
 
-    public DistribucionVolumen consultarPorId(int id) {
+    public Encargados consultarPorId(int id) {
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT * FROM DistribucionVolumen WHERE id=?";
+            String sql = "SELECT * FROM encargados WHERE id=?";
             pst = getConexion().prepareStatement(sql);
             pst.setInt(1, id);
             rs = pst.executeQuery();
 
             if (rs.next()) {
-                DistribucionVolumen vol = new DistribucionVolumen();
-                vol.setId(rs.getInt("id"));
-                vol.setEtapa(rs.getString("etapa"));
-                vol.setSemanaa(rs.getInt("semana"));
-                vol.setMesociclo(rs.getInt("mesociclo"));
-                java.sql.Date fechaInicioSql = rs.getDate("fechaInicio");
-                java.sql.Date fechaFinSql = rs.getDate("fechaFin");
-                vol.setFechaInicio(new java.sql.Date(fechaInicioSql.getTime()));
-                vol.setFechaFin(new java.sql.Date(fechaFinSql.getTime()));
-                vol.setCiclicidad(rs.getFloat("ciclicidad"));
-                vol.setAcentos(rs.getFloat("acentos"));
-                vol.setEsfuerzo(rs.getFloat("esfuerzo"));
-                vol.setMediosFisicos(rs.getString("mediosFisicos"));
-                return vol;
+                Encargados enc = new Encargados();
+                enc.setId(rs.getInt("id"));
+                enc.setDeporte(rs.getString("deporte"));
+                enc.setRama(rs.getString("rama"));
+                enc.setJefeRama(rs.getString("jefeRama"));
+                enc.setMetodologo(rs.getString("metodologo"));
+                java.sql.Date fechaInicioSql = rs.getDate("inicioPlan");
+                java.sql.Date fechaFinSql = rs.getDate("finPlan");
+                enc.setInicioPlan(new java.sql.Date(fechaInicioSql.getTime()));
+                enc.setFinPlan(new java.sql.Date(fechaFinSql.getTime()));
+                enc.setTotalSemanas(rs.getInt("totalSemanas"));
+                enc.setMediosFisicos_id(rs.getInt("mediosFisicos_id"));
+                
+                return enc;
             }
         } catch (SQLException e) {
             System.out.println("Error en: " + e);
@@ -166,8 +167,8 @@ public class DistribucionVolumenDAO extends Conexion {
         }
         return null; // Si no se encontró la etapa con el ID especificado
     }
-    public List<DistribucionVolumen> consulTodo(){
-        List<DistribucionVolumen> listaDistribucion = new ArrayList<>();
+    public List<Encargados> consulTodo(){
+        List<Encargados> listaDistribucion = new ArrayList<>();
         PreparedStatement pst = null;
         ResultSet rs = null;
         try {
@@ -177,21 +178,20 @@ public class DistribucionVolumenDAO extends Conexion {
             rs = pst.executeQuery();
 
             while (rs.next()) {
-                DistribucionVolumen vol = new DistribucionVolumen();
-                vol.setId(rs.getInt("id"));
-                vol.setEtapa(rs.getString("etapa"));
-                vol.setSemanaa(rs.getInt("semana"));
-                vol.setMesociclo(rs.getInt("mesociclo"));
-                java.sql.Date fechaInicioSql = rs.getDate("fechaInicio");
-                java.sql.Date fechaFinSql = rs.getDate("fechaFin");
-                vol.setFechaInicio(new java.sql.Date(fechaInicioSql.getTime()));
-                vol.setFechaFin(new java.sql.Date(fechaFinSql.getTime()));
-                vol.setCiclicidad(rs.getFloat("ciclicidad"));
-                vol.setAcentos(rs.getFloat("acentos"));
-                vol.setEsfuerzo(rs.getFloat("esfuerzo"));
-                vol.setMediosFisicos(rs.getString("mediosFisicos"));
+                Encargados enc = new Encargados();
+                 enc.setId(rs.getInt("id"));
+                enc.setDeporte(rs.getString("deporte"));
+                enc.setRama(rs.getString("rama"));
+                enc.setJefeRama(rs.getString("jefeRama"));
+                enc.setMetodologo(rs.getString("metodologo"));
+                java.sql.Date fechaInicioSql = rs.getDate("inicioPlan");
+                java.sql.Date fechaFinSql = rs.getDate("finPlan");
+                enc.setInicioPlan(new java.sql.Date(fechaInicioSql.getTime()));
+                enc.setFinPlan(new java.sql.Date(fechaFinSql.getTime()));
+                enc.setTotalSemanas(rs.getInt("totalSemanas"));
+                enc.setMediosFisicos_id(rs.getInt("mediosFisicos_id"));
                 
-                listaDistribucion.add(vol);
+                listaDistribucion.add(enc);
             }
             
             return listaDistribucion;
@@ -215,5 +215,4 @@ public class DistribucionVolumenDAO extends Conexion {
         return null; // Si no se encontró la etapa con el ID especificado
     
     }
-    
 }

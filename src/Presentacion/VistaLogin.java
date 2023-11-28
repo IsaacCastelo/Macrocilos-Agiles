@@ -85,7 +85,9 @@ public class VistaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviarActionPerformed
-
+Portada port=new Portada();
+this.dispose();
+port.setVisible(true);
     }//GEN-LAST:event_ButtonEnviarActionPerformed
 
     private void VolumenEtapaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolumenEtapaTextActionPerformed
@@ -94,7 +96,9 @@ public class VistaLogin extends javax.swing.JFrame {
 
     private void ButtonEnviar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviar1ActionPerformed
         VistaRegistrar reg = new VistaRegistrar();
+       this.dispose();
         reg.setVisible(true);
+       
     }//GEN-LAST:event_ButtonEnviar1ActionPerformed
 
     public static void main(String args[]) {
