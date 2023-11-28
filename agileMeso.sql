@@ -1,6 +1,6 @@
-
+drop database AgileMeso;
 create database AgileMeso;
-create schema mesociclos;
+use AgileMeso;
 
 create table MediosFisicos(
 MediosFisicos_id int(10) not null AUTO_INCREMENT primary key,
@@ -31,6 +31,20 @@ prom int(10),
 ins int(10),
 semanas int(10),
 volumenEtapa int(30),
+MediosFisicos_id int(10),
+
+ FOREIGN KEY (MediosFisicos_id) REFERENCES MediosFisicos (MediosFisicos_id)
+);
+create table encargados(
+encargados_id int(10) not null auto_increment primary key,
+deporte varchar(10),
+rama varchar(10),
+jefeRama varchar(10),
+EntAuxPrepFis varchar(10),
+metodologo varchar(10),
+inicioPlan DATE,
+finPlan DATE,
+totalSemanas int(10),
 MediosFisicos_id int(10),
 
  FOREIGN KEY (MediosFisicos_id) REFERENCES MediosFisicos (MediosFisicos_id)
