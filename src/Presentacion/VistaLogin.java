@@ -1,9 +1,12 @@
 
 package Presentacion;
 
+import javax.swing.JOptionPane;
+import persistence.UsuariosDAO;
+
 public class VistaLogin extends javax.swing.JFrame {
     
-    
+    private boolean mostrarContrasena = false;
     
     public VistaLogin() {
         initComponents();
@@ -19,8 +22,8 @@ public class VistaLogin extends javax.swing.JFrame {
         VolumenEtapaLabel1 = new javax.swing.JLabel();
         VolumenEtapaLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        passTXT = new javax.swing.JPasswordField();
-        VolumenEtapaText = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        usuarioTextField = new javax.swing.JTextField();
         ButtonEnviar1 = new javax.swing.JButton();
         ButtonEnviar = new javax.swing.JButton();
         FondoLabel = new javax.swing.JLabel();
@@ -52,14 +55,14 @@ public class VistaLogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("¿No estás registrado?");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, -1, -1));
-        getContentPane().add(passTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 140, -1));
+        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 140, -1));
 
-        VolumenEtapaText.addActionListener(new java.awt.event.ActionListener() {
+        usuarioTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolumenEtapaTextActionPerformed(evt);
+                usuarioTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(VolumenEtapaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 140, -1));
+        getContentPane().add(usuarioTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 140, -1));
 
         ButtonEnviar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnRegister.png"))); // NOI18N
         ButtonEnviar1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,21 +88,51 @@ public class VistaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviarActionPerformed
-Portada port=new Portada();
-this.dispose();
-port.setVisible(true);
+
+        String usuario = usuarioTextField.getText();
+        String contrasena = new String(passwordField.getPassword());
+
+        if (usuario.isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Favor de llenar los campos de usuario y contraseña.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (usuario.length() > 10 || contrasena.length() > 10) {
+            JOptionPane.showMessageDialog(this, "Usuario y contraseña deben tener un máximo de 10 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!usuario.matches("[a-zA-Z0-9]+") || !contrasena.matches("[a-zA-Z0-9]+")) {
+            JOptionPane.showMessageDialog(this, "Usuario y contraseña solo pueden contener letras y números", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            UsuariosDAO usuarioDAO = new UsuariosDAO();
+            if (usuarioDAO.validarInicioSesion(usuario, contrasena)) {
+                Portada port = new Portada();
+                this.dispose();
+                port.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_ButtonEnviarActionPerformed
 
-    private void VolumenEtapaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolumenEtapaTextActionPerformed
+    private void usuarioTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_VolumenEtapaTextActionPerformed
+    }//GEN-LAST:event_usuarioTextFieldActionPerformed
 
     private void ButtonEnviar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviar1ActionPerformed
-        VistaRegistrar reg = new VistaRegistrar();
-       this.dispose();
-        reg.setVisible(true);
+        
        
     }//GEN-LAST:event_ButtonEnviar1ActionPerformed
+
+    
+    private void toggleMostrarContrasena() {
+        mostrarContrasena = !mostrarContrasena;
+        if (mostrarContrasena) {
+            passwordField.setEchoChar((char) 0);
+        } else {
+            passwordField.setEchoChar('*'); 
+        }
+    }
+
+    private void eyeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        toggleMostrarContrasena();
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -142,8 +175,8 @@ port.setVisible(true);
     private javax.swing.JLabel VolumenEtapaLabel;
     private javax.swing.JLabel VolumenEtapaLabel1;
     private javax.swing.JLabel VolumenEtapaLabel2;
-    private javax.swing.JTextField VolumenEtapaText;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField passTXT;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField usuarioTextField;
     // End of variables declaration//GEN-END:variables
 }
