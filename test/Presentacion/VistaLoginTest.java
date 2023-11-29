@@ -15,6 +15,7 @@ public class VistaLoginTest {
         String[] args = null;
         VistaLogin.main(args);
         System.out.println("El main se ejecuta bien.");
+        System.out.println("asdasd");
     }
     
 }
