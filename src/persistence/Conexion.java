@@ -18,8 +18,8 @@ public class Conexion {
      * Importante cambiar las constantes en caso de necesitarse
      */
     private final String USER = "root";
-    private final String PASSWORD = "1234";
-    private final String DATABASE = "AgileMeso";
+    private final String PASSWORD = "123456";
+    private final String DATABASE = "agilemeso";
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     /**
