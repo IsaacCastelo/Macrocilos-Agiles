@@ -1,28 +1,27 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package dominio;
 
+/**
+ *
+ * @author Carlos A. Valle Encinas.
+ */
 public class Usuarios {
     
-    public int id;
-    public String usuario, nombre, contrasenia, email;
+    public int id, contrasenia;
+    public String usuario;
     
     public Usuarios(){
         
     }
     
-    public Usuarios(int id, String contrasenia, String usuario){
+    public Usuarios(int id, int contrasenia, String usuario){
         this.id= id; 
         this.contrasenia= contrasenia;
         this.usuario= usuario;
     }
-
-    public Usuarios(String usuario, String nombre, String contrasenia, String email) {
-        this.usuario = usuario;
-        this.nombre = nombre;
-        this.contrasenia = contrasenia;
-        this.email = email;
-    }
-    
 
     public int getId() {
         return id;
@@ -32,11 +31,11 @@ public class Usuarios {
         this.id = id;
     }
 
-    public String getContrasenia() {
+    public int getContrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(String contrasenia) {
+    public void setContrasenia(int contrasenia) {
         this.contrasenia = contrasenia;
     }
 
@@ -47,23 +46,4 @@ public class Usuarios {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    
-    
 }

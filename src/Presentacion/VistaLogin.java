@@ -24,7 +24,7 @@ public class VistaLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         usuarioTextField = new javax.swing.JTextField();
-        btnRegistrar = new javax.swing.JButton();
+        ButtonEnviar1 = new javax.swing.JButton();
         ButtonEnviar = new javax.swing.JButton();
         FondoLabel = new javax.swing.JLabel();
 
@@ -64,13 +64,13 @@ public class VistaLogin extends javax.swing.JFrame {
         });
         getContentPane().add(usuarioTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 140, -1));
 
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnRegister.png"))); // NOI18N
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        ButtonEnviar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btnRegister.png"))); // NOI18N
+        ButtonEnviar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                ButtonEnviar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 120, 30));
+        getContentPane().add(ButtonEnviar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 120, 30));
 
         ButtonEnviar.setText("Submit");
         ButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -112,13 +112,13 @@ public class VistaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEnviarActionPerformed
 
     private void usuarioTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTextFieldActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_usuarioTextFieldActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        VistaRegistrar vr = new VistaRegistrar();
-        vr.setVisible(true);
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void ButtonEnviar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviar1ActionPerformed
+        
+       
+    }//GEN-LAST:event_ButtonEnviar1ActionPerformed
 
     
     private void toggleMostrarContrasena() {
@@ -168,13 +168,13 @@ public class VistaLogin extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonEnviar;
+    private javax.swing.JButton ButtonEnviar1;
     private javax.swing.JLabel FondoLabel;
     private javax.swing.JLabel ImagenPotrosLabel;
     private javax.swing.JLabel TituloLabel;
     private javax.swing.JLabel VolumenEtapaLabel;
     private javax.swing.JLabel VolumenEtapaLabel1;
     private javax.swing.JLabel VolumenEtapaLabel2;
-    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField usuarioTextField;
