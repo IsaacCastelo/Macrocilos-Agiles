@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 public class VistaCalcularEtapas extends javax.swing.JFrame {
     
     CalcularEtapas etapa_Calculada= new CalcularEtapas();
+       initComponents();
     String fechaInicio ;
         String fechaFin ;
         String deporte;
@@ -247,7 +248,9 @@ public class VistaCalcularEtapas extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEnviarActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
-        // TODO add your handling code here:
+        ConfigInicial config=new ConfigInicial();
+        this.dispose();
+        config.setVisible(true);
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
