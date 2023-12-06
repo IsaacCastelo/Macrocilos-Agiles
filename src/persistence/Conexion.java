@@ -18,7 +18,7 @@ public class Conexion {
      * Importante cambiar las constantes en caso de necesitarse
      */
     private final String USER = "root";
-    private final String PASSWORD = "";
+    private final String PASSWORD = "PxlStorm124!";
     private final String DATABASE = "agilemeso";
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
