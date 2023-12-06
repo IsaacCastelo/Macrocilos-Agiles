@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 public class VistaCalcularEtapas extends javax.swing.JFrame {
     
     CalcularEtapas etapa_Calculada= new CalcularEtapas();
+       initComponents();
     String fechaInicio ;
         String fechaFin ;
         String deporte;
