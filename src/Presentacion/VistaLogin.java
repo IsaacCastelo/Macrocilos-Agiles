@@ -116,8 +116,8 @@ public class VistaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioTextFieldActionPerformed
 
     private void ButtonEnviar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviar1ActionPerformed
-        
-       
+        VistaRegistrar vs = new VistaRegistrar();
+        vs.setVisible(true);
     }//GEN-LAST:event_ButtonEnviar1ActionPerformed
 
     

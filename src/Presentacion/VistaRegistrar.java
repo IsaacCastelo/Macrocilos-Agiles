@@ -1,9 +1,12 @@
 
 package Presentacion;
 import dominio.CalcularEtapas;
+import dominio.Usuarios;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import persistence.UsuariosDAO;
 
 public class VistaRegistrar extends javax.swing.JFrame {
     
@@ -68,10 +71,10 @@ public class VistaRegistrar extends javax.swing.JFrame {
                 nombreTXTActionPerformed(evt);
             }
         });
-        getContentPane().add(nombreTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 160, 20));
-        getContentPane().add(emailTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 160, 20));
-        getContentPane().add(usuarioTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 160, 20));
-        getContentPane().add(passwordTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 160, -1));
+        getContentPane().add(nombreTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 170, 30));
+        getContentPane().add(emailTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 170, 30));
+        getContentPane().add(usuarioTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 170, 30));
+        getContentPane().add(passwordTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 170, 30));
 
         ButtonEnviar.setText("Enviar");
         ButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +108,28 @@ public class VistaRegistrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviarActionPerformed
+    String nombre = nombreTXT.getText();
+        String contrasenia = new String(passwordTXT.getPassword());
+        String usuario = usuarioTXT.getText();
+        String email = emailTXT.getText();
 
+        // Realiza las validaciones necesarias
+        if (usuario.isEmpty() || contrasenia.isEmpty() || nombre.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Favor de llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (usuario.length() > 10 || contrasenia.length() > 10) {
+            JOptionPane.showMessageDialog(this, "Usuario y contraseña deben tener un máximo de 10 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!usuario.matches("[a-zA-Z0-9]+") || !contrasenia.matches("[a-zA-Z0-9]+")) {
+            JOptionPane.showMessageDialog(this, "Usuario y contraseña solo pueden contener letras y números", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Usuarios nuevoUsuario = new Usuarios(nombre, usuario, contrasenia, email);
+            UsuariosDAO usuarioDAO = new UsuariosDAO();
+            if (usuarioDAO.registrarEntrenador(nuevoUsuario)) {
+                JOptionPane.showMessageDialog(this, "Usuario registrado con éxito", "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+                this.limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo registrar el usuario", "Error de registro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_ButtonEnviarActionPerformed
 
     private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
@@ -113,11 +137,11 @@ public class VistaRegistrar extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegresarActionPerformed
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
-   
+   this.limpiarCampos();
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
     private void nombreTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTXTActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_nombreTXTActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -137,4 +161,11 @@ public class VistaRegistrar extends javax.swing.JFrame {
     private javax.swing.JLabel usuarioLabel1;
     private javax.swing.JTextField usuarioTXT;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+       nombreTXT.setText("");
+      passwordTXT.setText("");
+      usuarioTXT.setText("");
+      emailTXT.setText(""); 
+    }
 }

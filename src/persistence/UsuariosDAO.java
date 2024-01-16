@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package persistence;
 
 import dominio.Usuarios;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,9 +18,9 @@ public class UsuariosDAO extends Conexion {
         PreparedStatement pst= null;
         
         try{
-            String sql= "INSER INTO login (usuario, contrasenia) VALUES (?,?)"; 
+            String sql = "INSERT INTO usuarios (nombre, contrasena) VALUES (?, ?)";
             pst = getConexion().prepareStatement(sql);
-            pst.setInt(1, log.contrasenia);
+            pst.setString(1, log.contrasenia);
             pst.setString(2, log.usuario);
             
             if (pst.executeUpdate() == 1) {
@@ -45,6 +43,20 @@ public class UsuariosDAO extends Conexion {
         }
         return false;
     }   
+    
+    public boolean registrarEntrenador(Usuarios log) {
+        String sql = "INSERT INTO usuarios (nombre, usuario, contrasena, email) VALUES (?, ?, ?, ?)";
+        try (Connection conn = getConexion(); PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, log.getNombre()); 
+            pst.setString(2, log.getUsuario()); 
+            pst.setString(3, log.getContrasenia()); 
+            pst.setString(4, log.getEmail());
+            return pst.executeUpdate() == 1;
+        } catch (SQLException e) {
+            System.out.println("Error en: " + e);
+        }
+        return false;
+    }
     
     public boolean validarInicioSesion(String nombreUsuario, String contrasena) {
         
